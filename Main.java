@@ -8,15 +8,15 @@ public class Main {
     }
 
     public static boolean isBehind() {
-        ProcessBuilder fetch = new ProcessBuilder("echo", "behind");
+        ProcessBuilder fetch = new ProcessBuilder("git", "fetch");
         byte[] bytes;
         try {
             InputStream inputStream = fetch.start().getInputStream();
             bytes = new byte[inputStream.available()];
             inputStream.read(bytes);
             String result = new String(bytes);
-            System.out.println(result);
-            return result.contains("behind");
+
+            return result.contains("");
         } catch (IOException e) {
             return false;
         }
