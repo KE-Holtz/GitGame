@@ -3,8 +3,10 @@ import java.io.InputStream;
 
 public class Main {
     public static void main(String[] args) {
+        int i = 0;
         while (isUpToDate()) {
-            System.out.println("Still up to date");
+            i++;
+            System.out.println("Still up to date (" + i + ")");
         }
         System.out.println("new changes");
     }
@@ -17,7 +19,7 @@ public class Main {
             bytes = new byte[inputStream.available()];
             inputStream.read(bytes);
             String result = new String(bytes);
-            Logger.log(result);
+            // Logger.log(result);
             return result.isBlank();
         } catch (IOException e) {
             return false;
