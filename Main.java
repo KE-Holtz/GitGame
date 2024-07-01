@@ -1,13 +1,12 @@
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(isBehind());
+        System.out.println(canPull());
     }
 
-    public static boolean isBehind() {
+    public static boolean canPull() {
         ProcessBuilder fetch = new ProcessBuilder("git", "fetch");
         byte[] bytes;
         try {
@@ -15,8 +14,9 @@ public class Main {
             bytes = new byte[inputStream.available()];
             inputStream.read(bytes);
             String result = new String(bytes);
-
-            return result.contains("");
+            result += 'c';
+            Logger.log(result);
+            return result.isBlank();
         } catch (IOException e) {
             return false;
         }
